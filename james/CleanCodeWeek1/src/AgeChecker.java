@@ -1,9 +1,11 @@
 import java.time.LocalDate;
 
 public class AgeChecker {
-    private static final int YEAR_ERROR = -1;
-    private static final int DATE_ERROR = -2;
-    private static final int NEGATIVE_ERROR = -10;
+    private static final int YEAR_ERROR_CODE = -1;
+    private static final int DATE_ERROR_CODE = -2;
+    private static final String NEGATIVE_ERROR = "양수를 입력해주세요.";
+    private static final String YEAR_ERROR_MESSAGE = "출생 연도을 기준일보다 이전으로 입력해주세요.";
+    private static final String DATE_ERROR_MESSAGE = "출생일을 기준일보다 이전으로 입력해주세요.";
     private LocalDate now = LocalDate.now();
     private Date userBirthday;
     private int currentYear;
@@ -31,12 +33,12 @@ public class AgeChecker {
                 return currentYear - userYear;
             }
         } else if (currentYear - userYear < 0) {
-            System.out.println("1)출생 연도을 기준일보다 이전으로 입력해주세요.");
-            return YEAR_ERROR;
+            System.out.println(YEAR_ERROR_MESSAGE);
+            return YEAR_ERROR_CODE;
         } else {
             if (userDate - currentDate > 0) {
-                System.out.println("2)출생일을 기준일보다 이전으로 입력해주세요.");
-                return DATE_ERROR;
+                System.out.println(DATE_ERROR_MESSAGE);
+                return DATE_ERROR_CODE;
             } else {
                 return 0;
             }
@@ -46,7 +48,7 @@ public class AgeChecker {
     void setNegativeException(int num) {
         try {
             if (isNegativeNumber(num)) {
-                throw new negativeNumberException("양수를 입력해주세요.");
+                throw new negativeNumberException(NEGATIVE_ERROR);
             }
         } catch (negativeNumberException e) {
             e.printStackTrace();
