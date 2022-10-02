@@ -208,7 +208,7 @@ public class ChapterThreeMethods {
 
         class MultiParamMethods {
             /**
-             * 이런식으로 두 개 이상의 변수가 밀접한 뎐관성이 있을 경우에는 하나의 클래스 또는 객체로 묶어서 생각하면 좋다
+             * 이런식으로 두 개 이상의 변수가 밀접한 연관성이 있을 경우에는 하나의 클래스 또는 객체로 묶어서 생각하면 좋다
              */
             class Point {
                 double x;

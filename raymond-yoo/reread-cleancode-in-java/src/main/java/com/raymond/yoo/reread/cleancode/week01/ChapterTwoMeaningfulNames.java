@@ -48,7 +48,7 @@ public class ChapterTwoMeaningfulNames {
         List<Cell> gameBoardBetter;
 
         /**
-         * 훯씬 더 이해하기 편한 함수
+         * 훨씬 더 이해하기 편한 함수
          */
         public List<Cell> getFlaggedCellsBetter() {
             List<Cell> flaggedCells = new ArrayList<>();
