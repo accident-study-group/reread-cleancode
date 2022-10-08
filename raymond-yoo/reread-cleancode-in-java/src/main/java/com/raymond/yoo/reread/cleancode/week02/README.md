@@ -26,6 +26,12 @@
 
 [Raymond Yoo: 자동차 경주 게임 구현](https://github.com/OptimistLabyrinth/java-racingcar-precourse)
 
+## 전체 소스코드에 대한 설명
+
+docs/README.md 파일에 정리해두었습니다.
+
+[docs/REAME.me](https://github.com/OptimistLabyrinth/java-racingcar-precourse/tree/master/docs)
+
 ## 소스코드에서 특정한 영역 지정하는 방법
 
 아래 유튜브 영상에서 아주 친절하게 설명해줍니다.
