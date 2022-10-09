@@ -2,17 +2,17 @@ void main() {
   final batteryAmount = BatteryAmount(10055342, max: 23632425);
   final battery = MacBookBattery(batteryAmount);
 
-  print('battery.remainingPercent() = ${battery.remainingPercent()}');
-  print('battery.isLow() = ${battery.isLow()}');
-  print('battery.isHigh() = ${battery.isHigh()}');
+  print('battery.remainingPercent = ${battery.remainingPercent}');
+  print('battery.isHigh = ${battery.isHigh}');
+  print('battery.isLow = ${battery.isLow}');
 }
 
 abstract class Battery {
-  num remainingPercent();
+  num get remainingPercent;
 
-  bool isLow();
+  bool get isHigh;
 
-  bool isHigh();
+  bool get isLow;
 }
 
 class MacBookBattery implements Battery {
@@ -21,19 +21,13 @@ class MacBookBattery implements Battery {
   MacBookBattery(this.amount);
 
   @override
-  bool isHigh() {
-    return remainingPercent() > 70;
-  }
+  num get remainingPercent => (amount.value / (amount.max)) * 100;
 
   @override
-  bool isLow() {
-    return remainingPercent() < 25;
-  }
+  bool get isHigh => remainingPercent > 70;
 
   @override
-  num remainingPercent() {
-    return (amount.value / (amount.max)) * 100;
-  }
+  bool get isLow => remainingPercent < 25;
 }
 
 class BatteryAmount {
