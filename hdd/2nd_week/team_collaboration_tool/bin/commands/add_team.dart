@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:riverpod/riverpod.dart';
+
 import '../core/base_command.dart';
 import '../domain/services/team_service.dart';
+
+final addTeamProvider =
+    Provider<AddTeam>((ref) => AddTeam(ref.watch(teamServiceProvider)));
 
 class AddTeam implements BaseCommand {
   final TeamService _teamService;

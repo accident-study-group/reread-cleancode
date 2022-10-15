@@ -1,7 +1,9 @@
-import 'dependency_manager.dart';
+import 'package:riverpod/riverpod.dart';
+
+import 'commands/get_teams.dart';
 
 void main(List<String> args) async {
-  await dependencyManager.getTeams.call();
-  await dependencyManager.addTeam.call();
-  await dependencyManager.searchTeam.call();
+  final container = ProviderContainer();
+
+  container.read(getTeamsProvider).call();
 }

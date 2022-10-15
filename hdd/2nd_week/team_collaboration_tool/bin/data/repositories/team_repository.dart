@@ -1,5 +1,14 @@
+import 'package:riverpod/riverpod.dart';
+
 import '../../db/database.dart';
 import '../data_sources/team_dao.dart';
+import 'team_repository_impl.dart';
+
+final teamRepositoryProvider = Provider<TeamRepository>(
+  (ref) => TeamRepositoryImpl(
+    ref.watch(teamDaoProvider),
+  ),
+);
 
 abstract class TeamRepository {
   Future<TeamEntity?> getTeamOrNull(String teamName);
@@ -9,30 +18,4 @@ abstract class TeamRepository {
   Future<List<TeamEntity>> getTeams();
 
   deleteTeam();
-}
-
-class TeamRepositoryImpl implements TeamRepository {
-  final TeamDao teamDao;
-
-  TeamRepositoryImpl(this.teamDao);
-
-  @override
-  deleteTeam() {
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<TeamEntity?> getTeamOrNull(String teamName) {
-    return teamDao.getTeamOrNull(teamName);
-  }
-
-  @override
-  Future<int> insertTeam(String teamName) {
-    return teamDao.insertTeam(teamName);
-  }
-
-  @override
-  Future<List<TeamEntity>> getTeams() {
-    return teamDao.getTeams();
-  }
 }

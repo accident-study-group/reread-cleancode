@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:riverpod/riverpod.dart';
+
 import '../core/base_command.dart';
 import '../domain/services/team_service.dart';
+
+final searchTeamProvider =
+Provider<SearchTeam>((ref) => SearchTeam(ref.watch(teamServiceProvider)));
 
 class SearchTeam implements BaseCommand {
   final TeamService _teamService;

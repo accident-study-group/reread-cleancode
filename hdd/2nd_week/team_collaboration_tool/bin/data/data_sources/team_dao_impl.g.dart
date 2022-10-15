@@ -1,11 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'team_dao.dart';
+part of 'team_dao_impl.dart';
 
 // **************************************************************************
 // DaoGenerator
 // **************************************************************************
 
-mixin _$TeamDaoMixin on DatabaseAccessor<Database> {
+mixin _$TeamDaoImplMixin on DatabaseAccessor<Database> {
   $TeamTableTable get teamTable => attachedDatabase.teamTable;
 }
