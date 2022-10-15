@@ -1,4 +1,4 @@
 abstract class BaseCommand {
 
-  call();
+  dynamic call();
 }

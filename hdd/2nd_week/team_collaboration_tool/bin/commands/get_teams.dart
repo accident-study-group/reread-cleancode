@@ -9,7 +9,7 @@ class GetTeams implements BaseCommand {
   GetTeams(this._teamService);
 
   @override
-  call() async {
+  Future<void> call() async {
     var teams = await _teamService.getTeamList();
     stdout.writeln('######현재팀목록######');
 

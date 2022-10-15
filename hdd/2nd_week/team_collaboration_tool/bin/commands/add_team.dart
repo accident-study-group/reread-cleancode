@@ -3,14 +3,13 @@ import 'dart:io';
 import '../core/base_command.dart';
 import '../domain/services/team_service.dart';
 
-
 class AddTeam implements BaseCommand {
   final TeamService _teamService;
 
   AddTeam(this._teamService);
 
   @override
-  call() {
+  Future<void> call() async {
     try {
       stdout.writeln('생성하려는 팀 명을 입력해주세요.');
       var teamName = stdin.readLineSync()?.trim() ?? '';

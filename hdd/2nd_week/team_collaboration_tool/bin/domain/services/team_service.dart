@@ -6,7 +6,7 @@ abstract class TeamService {
 
   Future<Team?> searchTeamByName(String teamName);
 
-  removeTeam();
+  dynamic removeTeam();
 
   Future<List<Team>> getTeamList();
 }
@@ -38,7 +38,7 @@ class TeamServiceImpl implements TeamService {
   }
 
   @override
-  removeTeam() {
+  dynamic removeTeam() {
     // TODO: implement removeTeam
     throw UnimplementedError();
   }
