@@ -15,4 +15,6 @@ abstract class TeamDao {
   Future<int> insertTeam(String name);
 
   Future<List<TeamEntity>> getTeams();
+
+  Future<int> deleteTeam(String name);
 }

@@ -26,4 +26,9 @@ class TeamDaoImpl extends DatabaseAccessor<Database>
   Future<List<TeamEntity>> getTeams() {
     return db.teamTable.select().get();
   }
+
+  @override
+  Future<int> deleteTeam(String name) {
+    return db.teamTable.deleteWhere((tbl) => tbl.name.equals(name));
+  }
 }
