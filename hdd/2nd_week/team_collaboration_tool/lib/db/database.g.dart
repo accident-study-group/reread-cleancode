@@ -183,7 +183,7 @@ class $TeamTableTable extends TeamTable
 abstract class _$Database extends GeneratedDatabase {
   _$Database(QueryExecutor e) : super(e);
   late final $TeamTableTable teamTable = $TeamTableTable(this);
-  late final TeamDao teamDao = TeamDao(this as Database);
+  late final TeamDaoImpl teamDaoImpl = TeamDaoImpl(this as Database);
   @override
   Iterable<TableInfo<Table, dynamic>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();

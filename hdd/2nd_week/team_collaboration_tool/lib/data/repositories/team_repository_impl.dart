@@ -1,15 +1,6 @@
 import '../../db/database.dart';
 import '../data_sources/team_dao.dart';
-
-abstract class TeamRepository {
-  Future<TeamEntity?> getTeamOrNull(String teamName);
-
-  Future<int> insertTeam(String teamName);
-
-  Future<List<TeamEntity>> getTeams();
-
-  deleteTeam();
-}
+import 'team_repository.dart';
 
 class TeamRepositoryImpl implements TeamRepository {
   final TeamDao teamDao;

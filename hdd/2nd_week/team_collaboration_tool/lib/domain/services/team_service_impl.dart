@@ -1,15 +1,6 @@
 import '../../data/repositories/team_repository.dart';
 import '../models/team.dart';
-
-abstract class TeamService {
-  Future<int> addTeam(String teamName);
-
-  Future<Team?> searchTeamByName(String teamName);
-
-  removeTeam();
-
-  Future<List<Team>> getTeamList();
-}
+import 'team_service.dart';
 
 class TeamServiceImpl implements TeamService {
   final TeamRepository _teamRepository;
@@ -38,7 +29,7 @@ class TeamServiceImpl implements TeamService {
   }
 
   @override
-  removeTeam() {
+  dynamic removeTeam() {
     // TODO: implement removeTeam
     throw UnimplementedError();
   }

@@ -1,7 +1,12 @@
 import 'dart:io';
 
+import 'package:riverpod/riverpod.dart';
+
 import '../core/base_command.dart';
 import '../domain/services/team_service.dart';
+
+final getTeamsProvider =
+    Provider<GetTeams>((ref) => GetTeams(ref.watch(teamServiceProvider)));
 
 class GetTeams implements BaseCommand {
   final TeamService _teamService;
@@ -9,7 +14,7 @@ class GetTeams implements BaseCommand {
   GetTeams(this._teamService);
 
   @override
-  call() async {
+  Future<void> call() async {
     var teams = await _teamService.getTeamList();
     stdout.writeln('######현재팀목록######');
 

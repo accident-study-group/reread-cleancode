@@ -1,8 +1,12 @@
 import 'dart:io';
 
+import 'package:riverpod/riverpod.dart';
+
 import '../core/base_command.dart';
 import '../domain/services/team_service.dart';
 
+final addTeamProvider =
+    Provider<AddTeam>((ref) => AddTeam(ref.watch(teamServiceProvider)));
 
 class AddTeam implements BaseCommand {
   final TeamService _teamService;
@@ -10,7 +14,7 @@ class AddTeam implements BaseCommand {
   AddTeam(this._teamService);
 
   @override
-  call() {
+  Future<void> call() async {
     try {
       stdout.writeln('생성하려는 팀 명을 입력해주세요.');
       var teamName = stdin.readLineSync()?.trim() ?? '';
