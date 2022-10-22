@@ -4,12 +4,13 @@ import 'package:team_collaboration_tool/data/data_sources/team_dao_impl.dart';
 import 'package:team_collaboration_tool/db/database.dart';
 import 'package:test/test.dart';
 
-
 void main() async {
   late Database database;
   late TeamDao teamDao;
 
   group('TeamDao', () {
+    final String teamName = 'Team HDD';
+
     group('.insertTeam()', () {
       setUp(() {
         database = Database(NativeDatabase.memory(setup: (database) {}));
@@ -20,24 +21,18 @@ void main() async {
         await database.close();
       });
 
-      final String newTeamName = 'Team HDD';
-
       test('성공했을 때 return 1', () async {
-        var insertResult = await teamDao.insertTeam(newTeamName);
+        var insertResult = await teamDao.insertTeam(teamName);
         expect(insertResult, equals(1));
       });
 
       test('데이터 중복으로 실패했을 때 throw SqliteException', () async {
         // 이미 데이터가 들어가있는 DB를 제공받은 상태로 하고싶은데, 아직까지는 하는 방법을 찾지 못함.
-        var insertResult = await teamDao.insertTeam(newTeamName);
+        var insertResult = await teamDao.insertTeam(teamName);
         expect(insertResult, equals(1));
 
-        expect(
-          () => teamDao.insertTeam(newTeamName),
-          throwsA(
-            isA<SqliteException>(),
-          ),
-        );
+        expect(() => teamDao.insertTeam(teamName),
+            throwsA(isA<SqliteException>()));
       });
     });
 
@@ -50,17 +45,14 @@ void main() async {
       tearDown(() async {
         await database.close();
       });
-
-      final String newTeamName = 'Team HDD';
-
       test('DB에 팀이 없을 때 return []', () async {
         var getTeamsResult = await teamDao.getTeams();
         expect(getTeamsResult, equals([]));
       });
 
-      test('DB에 팀이 있을 땐 return [TeamEntity()]', () async {
+      test('DB에 팀이 있을 때 return [TeamEntity()]', () async {
         // 이미 데이터가 들어가있는 DB를 제공받은 상태로 하고싶은데, 아직까지는 하는 방법을 찾지 못함.
-        var insertResult = await teamDao.insertTeam(newTeamName);
+        var insertResult = await teamDao.insertTeam(teamName);
         expect(insertResult, equals(1));
 
         var getTeamsResult = await teamDao.getTeams();
@@ -79,15 +71,12 @@ void main() async {
       tearDown(() async {
         await database.close();
       });
-
-      final String teamName = 'Team HDD';
-
       test('DB에 검색한 이름의 팀이 없을 때 return null', () async {
         var getTeamOrNullResult = await teamDao.getTeamOrNull(teamName);
         expect(getTeamOrNullResult, isNull);
       });
 
-      test('DB에 팀이 있을 땐 return TeamEntity()', () async {
+      test('DB에 팀이 있을 때 return TeamEntity()', () async {
         // 이미 데이터가 들어가있는 DB를 제공받은 상태로 하고싶은데, 아직까지는 하는 방법을 찾지 못함.
         var insertResult = await teamDao.insertTeam(teamName);
         expect(insertResult, equals(1));
@@ -107,15 +96,12 @@ void main() async {
       tearDown(() async {
         await database.close();
       });
-
-      final String teamName = 'Team HDD';
-
       test('DB에 삭제할 이름의 팀이 없을 때 return 0', () async {
         var deleteTeamResult = await teamDao.deleteTeam(teamName);
         expect(deleteTeamResult, equals(0));
       });
 
-      test('DB에 팀이 있을 땐 return 1', () async {
+      test('DB에 팀이 있을  return 1', () async {
         // 이미 데이터가 들어가있는 DB를 제공받은 상태로 하고싶은데, 아직까지는 하는 방법을 찾지 못함.
         var insertResult = await teamDao.insertTeam(teamName);
         expect(insertResult, equals(1));
