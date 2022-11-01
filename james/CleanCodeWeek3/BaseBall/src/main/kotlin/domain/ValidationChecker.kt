@@ -11,7 +11,7 @@ class ValidationChecker {
     }
 
     fun isValidInputNumber(number: String?): Boolean {
-        if (number?.length!! > 3 || number?.length!! < 3) {
+        if (number?.length!! != 3) {
             return false
         }
         val number1 = (number?.substring(0, 1)?.toInt()!! in 1..9)
@@ -20,7 +20,7 @@ class ValidationChecker {
         return number1 && number2 && number3
     }
 
-    fun isValidRetryOrQuit(number: String?): Boolean {
+    fun isValidReplayOrQuit(number: String?): Boolean {
         return (number == "1" || number == "2")
     }
 }

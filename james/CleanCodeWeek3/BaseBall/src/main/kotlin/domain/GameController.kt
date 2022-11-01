@@ -13,7 +13,7 @@ class GameController {
     fun startGame() {
         do {
             play()
-        } while (isRetry())
+        } while (isReplayable())
 
     }
 
@@ -31,7 +31,7 @@ class GameController {
         }
     }
 
-    private fun isRetry(): Boolean {
+    private fun isReplayable(): Boolean {
         outputView.printEnd()
         if (outputView.getReplayOrQuit() == REPLAY) {
             gameBoardData = gameBoardMaker.makeBoardData()

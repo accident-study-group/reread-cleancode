@@ -25,7 +25,8 @@ class OutputView {
     fun getReplayOrQuit(): Int {
         println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.")
         val number: String? = readLine()
-        if (ValidationChecker().isValidRetryOrQuit(number) && ValidationChecker().isInteger(number)) {
+        // TODO: 원시값 포장하기
+        if (ValidationChecker().isValidReplayOrQuit(number) && ValidationChecker().isInteger(number)) {
             return number?.toInt()!!
         }
 

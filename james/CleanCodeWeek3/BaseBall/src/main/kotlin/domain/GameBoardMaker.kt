@@ -20,13 +20,13 @@ class GameBoardMaker {
     }
 
     private fun setGameBoardData() {
-        var number = Random().nextInt(8) + 1
+        var number = (Random().nextInt(9) + 1).toString()
         if (!isDuplicate(number)) {
-            gameBoardData.boardData.add(number.toString())
+            gameBoardData.boardData.add(number)
         }
     }
 
-    private fun isDuplicate(number: Int): Boolean {
-        return gameBoardData.boardData.contains(number.toString())
+    private fun isDuplicate(number: String): Boolean {
+        return gameBoardData.boardData.contains(number)
     }
 }
